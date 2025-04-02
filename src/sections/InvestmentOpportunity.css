@@ -1,0 +1,19 @@
+.investment-card {
+    background-color: #f7f1e6;
+    border-radius: 10px;
+  }
+  
+  .text-content {
+    text-align: left;
+  }
+  
+  @media (max-width: 768px) {
+    .text-content {
+      text-align: center;
+    }
+  
+    .investment-card {
+      text-align: center;
+    }
+  }
+  

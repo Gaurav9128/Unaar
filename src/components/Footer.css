@@ -1,0 +1,21 @@
+.subscription-section {
+    
+    color: white;
+    padding: 60px 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .subscription-section .content {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .input-group input {
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .input-group button {
+    border-radius: 0 5px 5px 0;
+  }
+  

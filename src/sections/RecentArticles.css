@@ -1,0 +1,16 @@
+.small-img {
+    height: 150px; /* Adjust the height as per your requirement */
+    object-fit: cover;
+    width: 100%;
+  }
+  .img-left {
+    width: 40%; /* Adjust width as needed */
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .p-0 {
+    padding: 0 !important; /* Remove default card padding */
+  }
+  
+    

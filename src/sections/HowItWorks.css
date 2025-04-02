@@ -1,0 +1,18 @@
+.how-it-works-card {
+    background: none;
+    text-align: center;
+  }
+  
+  .how-it-works-img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+  }
+  
+  @media (max-width: 768px) {
+    .how-it-works-img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  

@@ -1,0 +1,31 @@
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  align-items: stretch; /* Grid items ki height adjust karne ke liye */
+}
+
+.country-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.country-card img {
+  width: 100%;
+  height: 100%; /* Ye image ko card ke size ke hisaab se adjust karega */
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.france-large {
+  grid-row: span 2;
+  display: flex;
+}
+
+.france-large img {
+  flex-grow: 1;
+  height: auto; /* Height ko auto par rakhne se gap nahi aayega */
+}

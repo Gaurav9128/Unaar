@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@300;400;600&display=swap');
+body {
+    font-family: 'Saira', sans-serif;
+}
+
+.parent {
+  display: flex;
+  justify-content: center; /* X-axis (Horizontally Center) */
+  align-items: flex-end;   /* Y-axis (Bottom Position) */
+  height: 30vh; /* Full viewport height */
+}
+
+
+.navbar {
+  background-color: black !important; /* White background remove */
+  position: absolute; /* Ensure it overlays the hero section */
+  width: 100%;
+  z-index: 1000;
+}
+
+.globe-icon {
+  /* border: 2px solid black !important; */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-user-icon {
+  border: 1px solid black !important;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.search-box {
+    position: relative;  /* अगर ज्यादा ऊपर चाहिए तो absolute करें */
+    top: -120px;  /* इसे adjust करें */
+    z-index: 20;  /* बैकग्राउंड से ऊपर लाने के लिए */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .search-box label {
+    color: #C69E6A;  
+    font-weight: bold; 
+  }
+/*  */
+
+.hero-content h1 {
+  font-weight: bold;
+}
+
+.hero-content p {
+  color: #555;
+}
+
+.search-box {
+  background: white;
+  max-width: 90%;
+  margin: auto;
+}
+
+.search-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

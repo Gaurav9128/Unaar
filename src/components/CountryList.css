@@ -1,0 +1,26 @@
+.flag {
+    width: 24px;
+    height: 16px;
+    object-fit: contain;
+  }
+  
+  .country-name {
+    font-weight: 500;
+  }
+  
+  .count {
+    color: #d4a373;
+    font-weight: 600;
+  }
+  
+  .show-all {
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    border-radius: 5px;
+  }
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+    
