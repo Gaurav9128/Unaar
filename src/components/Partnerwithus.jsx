@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Navbar, Nav, Container, Row, Col, Form, Button } from "react-bootstrap";
 import { FaSearch, FaGlobe, FaBars, FaUser } from "react-icons/fa";
 import logo from "../assets/images/logo.png";
-import heroBg from "../assets/images/Partner.jpeg";
+import heroBg from "../assets/images/partner.jpeg";
 import indiaFlag from "../assets/images/india-flag.png";
 import imageIcon from '../assets/images/image.png';
 import imagemen from '../assets/images/men.png';
