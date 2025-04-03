@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";  // Import EmailJS
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Form } from "react-bootstrap";
-import { FaSearch, FaGlobe, FaBars, FaUser } from "react-icons/fa";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { FaGlobe, FaBars, FaUser } from "react-icons/fa";
 import logo from "../assets/images/logo.png";
 import "./ContactForm.css";
 import indiaFlag from "../assets/images/india-flag.png";
-import profileImage from "../assets/images/Epert.png"; 
+import profileImage from "../assets/images/Epert.png";
 import Footer from "./Footer";
 
 const ContactForm = () => {
@@ -14,36 +15,39 @@ const ContactForm = () => {
     name: "",
     email: "",
     phone: "",
-    message: ""
+    message: "",
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const response = await fetch("https://formsubmit.co/unaarrealstate@gmail.com", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(formData)
-    });
-
-    if (response.ok) {
-      alert("Message sent successfully!");
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    } else {
-      alert("Failed to send message.");
-    }
+    emailjs
+      .send(
+        "service_ho96gln", // Replace with your EmailJS Service ID
+        "template_o19v92u", // Replace with your EmailJS Template ID
+        formData,
+        "J_g4RcTH3GOLf-oaj" // Replace with your EmailJS Public Key
+      )
+      .then(
+        (response) => {
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", phone: "", message: "" });
+        },
+        (error) => {
+          alert("Failed to send message. Try again!");
+          console.error(error);
+        }
+      );
   };
 
   return (
     <>
-      {/* Top Navbar */}
-      <Navbar expand="lg" className="bg-white py-2">
+    {/* Top Navbar */}
+    <Navbar expand="lg" className="bg-white py-2">
         <Container>
           <Navbar.Toggle aria-controls="navbarNav" />
           <Navbar.Collapse id="navbarNav">
@@ -113,51 +117,49 @@ const ContactForm = () => {
           <div className="col-md-8">
             <h4 className="fw-bold">Unaar's managers are here to help you select a property</h4>
             <form onSubmit={handleSubmit}>
-              <textarea 
-                className="form-control mb-2" 
-                name="message" 
-                placeholder="For example, an apartment overseas" 
-                rows="2" 
-                value={formData.message} 
-                onChange={handleChange} 
-                required 
+              <textarea
+                className="form-control mb-2"
+                name="message"
+                placeholder="For example, an apartment overseas"
+                rows="2"
+                value={formData.message}
+                onChange={handleChange}
+                required
               ></textarea>
-              <input 
-                type="text" 
-                className="form-control mb-2" 
-                name="name" 
-                placeholder="Name" 
-                value={formData.name} 
-                onChange={handleChange} 
-                required 
+              <input
+                type="text"
+                className="form-control mb-2"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
               />
               <div className="input-group mb-2">
                 <span className="input-group-text">🇮🇳</span>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  name="phone" 
-                  placeholder="Phone" 
-                  value={formData.phone} 
-                  onChange={handleChange} 
-                  required 
+                <input
+                  type="text"
+                  className="form-control"
+                  name="phone"
+                  placeholder="Phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
                 />
               </div>
-              <input 
-                type="email" 
-                className="form-control mb-3" 
-                name="email" 
-                placeholder="Email" 
-                value={formData.email} 
-                onChange={handleChange} 
-                required 
+              <input
+                type="email"
+                className="form-control mb-3"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
               />
-              <button className="btn btn-danger w-100" type="submit">Send a request</button>
+              <button className="btn btn-danger w-100" type="submit">
+                Send a request
+              </button>
             </form>
-            <p className="mt-2 text-muted text-center">
-              I confirm that I have read and accept the <a href="#">Privacy Policy</a> and
-              <a href="#"> Personal Data Processing Guidelines</a>.
-            </p>
           </div>
         </div>
       </div>
