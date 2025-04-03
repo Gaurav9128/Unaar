@@ -8,7 +8,6 @@ import Home from './components/Home';
 import About from './components/About';
 import Careers from './components/Careers';
 import Advertise from './components/Advertise';
-import UnitedState from './components/UnitedState';
 import Partnerwithus from './components/Partnerwithus';
 import PropertyListing from './components/PropertyListing';
 import Navbar from './components/Navbar';
@@ -36,7 +35,6 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path='/careers' element={<Careers />} />
         <Route path='/advertise' element={<Advertise />} />
-        <Route path='/unitedstate' element={<UnitedState />} />
         <Route path='/partner' element={<Partnerwithus />} />
         <Route path='/property' element={<PropertyListing />} />
         <Route path='/Navbar' element={<Navbar />} />
