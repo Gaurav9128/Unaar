@@ -224,10 +224,7 @@ const Home = () => {
 
 
       <header className="hero-section">
-        <div className="container text-center text-black d-flex flex-column justify-content-center align-items-center h-100">
-          <h1 className="fw-bold">Find Your Dream Home</h1>
-          <p>Discover the best properties across the world</p>
-        </div>
+        
       </header>
 
       {/* Search Filter - Shifted Below */}

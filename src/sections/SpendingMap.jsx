@@ -20,7 +20,7 @@ const SpendingMap = () => {
             />
             {/* Data Points */}
             {[
-              { country: "United States", value: 2460, top: "20%", left: "10%", route: "/unitedstate" },
+              { country: "United States", value: 2460, top: "20%", left: "10%", route: "" },
               { country: "England", value: 1489, top: "30%", left: "45%", route: "/property" },
               { country: "Russia", value: 2430, top: "15%", left: "65%", route:"/view" },
               { country: "India", value: 2099, top: "50%", left: "60%" },
