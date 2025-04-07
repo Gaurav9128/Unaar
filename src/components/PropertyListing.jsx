@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
-import { Navbar, Nav, Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
+import TopNavbar from "./TopNavbar";
+import { Navbar, Nav, Container, Row, Col, Form, Button, InputGroup, Offcanvas } from "react-bootstrap";
 import { FaSearch, FaGlobe, FaBars, FaUser } from "react-icons/fa";
 import logo from "../assets/images/logo.png";
 import heroBg from "../assets/images/Hero.jpeg";
@@ -156,78 +157,88 @@ const Home = () => {
   return (
     <>
       {/* Top Navbar */}
-      <Navbar expand="lg" className="bg-white py-0 mb-4">
-        <Container>
-          <Navbar.Toggle aria-controls="navbarNav" />
-          <Navbar.Collapse id="navbarNav">
-            <div className="nav-wrapper">
-              <Nav className="me-auto fw-bold text-dark">
-                <Nav.Link href="/careers">Careers</Nav.Link>
-                <Nav.Link href="/advertise">Advertise</Nav.Link>
-                <Nav.Link href="#">News & Articles</Nav.Link>
-                <Nav.Link href="#">Residence & Passports</Nav.Link>
-                <Nav.Link href="/about">About</Nav.Link>
-              </Nav>
-              <div className="d-flex align-items-center ms-3">
-                <img src={indiaFlag} alt="India" height="20" />
-                <span className="ms-2">+91 98765 43210</span>
-              </div>
-            </div>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+
+      <TopNavbar />
 
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg py-5 mt-3">
-        <div className="container">
-          <Link to="/" className="navbar-brand fw-bold">
+      <Navbar expand="lg" className="py-5 mt-7 secondary-nav bg-light" sticky="top">
+        <Container>
+          {/* Logo */}
+          <Navbar.Brand as={Link} to="/" className="fw-bold">
             <img src={logo} alt="UNAAR Logo" height="40" />
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+          </Navbar.Brand>
+
+          {/* Toggle Button (Visible on Mobile) */}
+          <Navbar.Toggle aria-controls="offcanvasNavbar" />
+
+          {/* Offcanvas Menu */}
+          <Navbar.Offcanvas
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+            placement="start"
           >
-            <FaBars />
-          </button>
-          <div className="collapse navbar-collapse  justify-content-center" id="navbarNav">
-            <ul className="navbar-nav text-center">
-              <li className="nav-item px-3"><Link to="/residential" className="nav-link">Residential</Link></li>
-              <li className="nav-item px-3"><Link to="/commercial" className="nav-link">Commercial</Link></li>
-              <li className="nav-item px-3"><Link to="/Invest" className="nav-link">Invest</Link></li>
-              <li className="nav-item px-3"><a href="/Rent" className="nav-link">Rent</a></li>
-              <li className="nav-item px-3"><a href="/partner" className="nav-link">Partner With Us</a></li>
-            </ul>
-          </div>
-          <div className="d-flex align-items-center gap-3">
-            <div className="p-2 globe-icon">
-              <FaGlobe />
-            </div>
-            <div className="border rounded-pill px-3 py-2 d-flex align-items-center gap-2 menu-user-icon">
-              <FaBars />
-              <div className="border rounded-circle p-2 globe-icon">
-                <FaUser />
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id="offcanvasNavbarLabel">
+                Menu
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+
+              {/* Main Nav Links */}
+              <Nav className="justify-content-center flex-grow-1 pe-3 text-center text-light custom-nav-links">
+                <Nav.Link as={Link} to="/residential">Residential</Nav.Link>
+                <Nav.Link as={Link} to="/commercial">Commercial</Nav.Link>
+                <Nav.Link as={Link} to="/Invest">Invest</Nav.Link>
+                <Nav.Link as={Link} to="/Rent">Rent</Nav.Link>
+                <Nav.Link as={Link} to="/partner">Partner With Us</Nav.Link>
+              </Nav>
+
+              <div className="d-flex align-items-center gap-3">
+                <div className="p-2 globe-icon icon-container">
+                  <FaGlobe color="black" />
+                </div>
+                <div className="border rounded-pill px-3 py-2 d-flex align-items-center gap-2 menu-user-icon icon-container">
+                  <FaBars color="black" />
+                  <div className="border rounded-circle p-2 globe-icon icon-container">
+                    <FaUser color="black" />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+
+
+
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+
+
+        </Container>
+      </Navbar>
 
       <header className="hero-section position-relative">
       </header>
 
       {/* Search Filter - Shifted Below */}
-      <Container className="search-box font-serif shadow-lg p-3 rounded mt-2">
+      <Container className="search-box font-serif shadow-lg p-4 rounded mt-4">
         <Row className="g-3">
           <Col md={3} xs={12}>
             <Form.Group>
               <Form.Label>Location</Form.Label>
               <Form.Select>
                 <option>Select Your City</option>
+                <option>India</option>
+                <option>Germany</option>
+                <option>Italy</option>
+                <option>Cyprus</option>
+                <option>Greece</option>
+                <option>France</option>
+                <option>Spain</option>
+                <option>Spain</option>
+                <option>Thailand</option>
+                <option>UAE</option>
+                <option>Turkey</option>
+                <option>United Kingdom</option>
+                <option>Montenegro</option>
+
               </Form.Select>
             </Form.Group>
           </Col>
@@ -236,6 +247,9 @@ const Home = () => {
               <Form.Label>Property Type</Form.Label>
               <Form.Select>
                 <option>All Type</option>
+                <option>Apartments</option>
+                <option>Houses,villas,cottages</option>
+                <option>Terraced house</option>
               </Form.Select>
             </Form.Group>
           </Col>
@@ -244,12 +258,23 @@ const Home = () => {
               <Form.Label>Price Range</Form.Label>
               <Form.Select>
                 <option>Choose Price Range</option>
+                <option>0-50,000</option>
+                <option>50,000-1,00,000</option>
+                <option>1,00,000-2,00,000</option>
+                <option>2,00,000-3,00,000</option>
+                <option>3,00,000-4,00,000</option>
+                <option>4,00,000-5,00,000</option>
+                <option>5,00,000-10,00,000</option>
+                <option>10,00,000-20,00,000</option>
+                <option>20,00,000-30,00,000</option>
+                <option>30,00,000-40,00,000</option>
+                <option>40,00,000-50,00,000</option>
               </Form.Select>
             </Form.Group>
           </Col>
           <Col md={3} xs={12} className="d-flex align-items-center gap-2">
             <Form.Group className="flex-grow-1">
-              <Form.Label>More</Form.Label>
+              <Form.Label>$USD</Form.Label>
               <Form.Select>
                 <option>Select</option>
               </Form.Select>
@@ -260,6 +285,7 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
+
 
       <div className="d-flex justify-content-between align-items-center">
         <h4 className="fw-bold" style={{ paddingLeft: "100px" }}>Showing {listings.length} of 257 places</h4>
@@ -284,7 +310,7 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      
+
       <Container className="py-5">
         <Row className="justify-content-center align-items-center">
           <Col lg={6} className="p-4 shadow rounded bg-light">

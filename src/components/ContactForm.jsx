@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";  // Import EmailJS
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Offcanvas } from "react-bootstrap";
 import { FaGlobe, FaBars, FaUser } from "react-icons/fa";
 import logo from "../assets/images/logo.png";
 import "./ContactForm.css";
+import TopNavbar from "./TopNavbar";
 import indiaFlag from "../assets/images/india-flag.png";
 import profileImage from "../assets/images/Epert.png";
 import Footer from "./Footer";
@@ -46,60 +47,62 @@ const ContactForm = () => {
 
   return (
     <>
-    {/* Top Navbar */}
-    <Navbar expand="lg" className="bg-white py-2">
-        <Container>
-          <Navbar.Toggle aria-controls="navbarNav" />
-          <Navbar.Collapse id="navbarNav">
-            <div className="nav-wrapper">
-              <Nav className="me-auto fw-bold text-dark">
-                <Nav.Link as={Link} to="/careers">Careers</Nav.Link>
-                <Nav.Link as={Link} to="/advertise">Advertise</Nav.Link>
-                <Nav.Link as={Link} to="#">News & Articles</Nav.Link>
-                <Nav.Link as={Link} to="#">Residence & Passports</Nav.Link>
-                <Nav.Link as={Link} to="/about">About</Nav.Link>
-              </Nav>
-              <div className="d-flex align-items-center ms-3">
-                <img src={indiaFlag} alt="India" height="20" />
-                <span className="ms-2">+91 98765 43210</span>
-              </div>
-            </div>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      {/* Top Navbar */}
+
+      <TopNavbar />
 
       {/* Secondary Navigation */}
-      <Navbar className="bg-light secondary-nav py-5 mt-3">
-        <Container className="d-flex align-items-center">
-          <Link to="/" className="navbar-brand fw-bold text-dark">
+      <Navbar expand="lg" className="py-5 mt-7 secondary-nav bg-light" sticky="top">
+        <Container>
+          {/* Logo */}
+          <Navbar.Brand as={Link} to="/" className="fw-bold">
             <img src={logo} alt="UNAAR Logo" height="40" />
-          </Link>
-          <Nav className="fw-bold text-dark">
-            <Nav.Link href="/residential">Residential</Nav.Link>
-            <Nav.Link href="/commercial">Commercial</Nav.Link>
-            <Nav.Link href="/Invest">Invest</Nav.Link>
-            <Nav.Link href="/Rent" className="fw-bold text-warning">Rent</Nav.Link>
-            <Nav.Link href="/partner">Partner With Us</Nav.Link>
-          </Nav>
-          <div className="d-flex align-items-center gap-3">
-            <div className="p-2 globe-icon" style={{ color: "black" }}>
-              <FaGlobe />
-            </div>
-            <div
-              className="border rounded-pill px-3 py-2 d-flex align-items-center gap-2 menu-user-icon"
-              style={{ color: "black", border: "2px solid black" }}
-            >
-              <FaBars />
-              <div
-                className="border rounded-circle p-2 globe-icon"
-                style={{ color: "black", border: "2px solid black" }}
-              >
-                <FaUser />
+          </Navbar.Brand>
+
+          {/* Toggle Button (Visible on Mobile) */}
+          <Navbar.Toggle aria-controls="offcanvasNavbar" />
+
+          {/* Offcanvas Menu */}
+          <Navbar.Offcanvas
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+            placement="start"
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id="offcanvasNavbarLabel">
+                Menu
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+
+              {/* Main Nav Links */}
+              <Nav className="justify-content-center flex-grow-1 pe-3 text-center text-light custom-nav-links">
+                <Nav.Link as={Link} to="/residential">Residential</Nav.Link>
+                <Nav.Link as={Link} to="/commercial">Commercial</Nav.Link>
+                <Nav.Link as={Link} to="/Invest">Invest</Nav.Link>
+                <Nav.Link as={Link} to="/Rent">Rent</Nav.Link>
+                <Nav.Link as={Link} to="/partner">Partner With Us</Nav.Link>
+              </Nav>
+
+              <div className="d-flex align-items-center gap-3">
+                <div className="p-2 globe-icon icon-container">
+                  <FaGlobe color="black" />
+                </div>
+                <div className="border rounded-pill px-3 py-2 d-flex align-items-center gap-2 menu-user-icon icon-container">
+                  <FaBars color="black" />
+                  <div className="border rounded-circle p-2 globe-icon icon-container">
+                    <FaUser color="black" />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+
+
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+
+
         </Container>
-      </Navbar> 
+      </Navbar>
       <br /><br /><br /><br /><br /><br /><br />
 
       {/* Contact Form Section */}
