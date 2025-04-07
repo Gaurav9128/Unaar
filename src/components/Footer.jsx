@@ -44,8 +44,8 @@ const Footer = () => {
       {/* Subscription Section */}
       <div className="subscription-section mt-4" style={{ backgroundImage: `url(${ballonImage})`, backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="content">
-          <h2>Lorem ipsum dolor sit amet,</h2>
-          <p>consectetur adipiscing elit</p>
+          <h2>Unaar Real State</h2>
+         
           <div className="input-group">
             <input type="email" className="form-control" placeholder="xyz.asas@gmail.com" />
             <button className="btn btn-primary">→</button>

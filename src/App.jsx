@@ -11,7 +11,6 @@ import Advertise from './components/Advertise';
 import UnitedState from './components/UnitedState';
 import Partnerwithus from './components/Partnerwithus';
 import PropertyListing from './components/PropertyListing';
-import Navbar from './components/Navbar';
 import View from './components/View';
 import Reviews from './components/Review';
 import SimilarListings from './components/SimilarListings';
@@ -39,7 +38,6 @@ const App = () => {
         <Route path='/unitedstate' element={<UnitedState />} />
         <Route path='/partner' element={<Partnerwithus />} />
         <Route path='/property' element={<PropertyListing />} />
-        <Route path='/Navbar' element={<Navbar />} />
         <Route path='/view' element={<View />} />
         <Route path='/review' element={<Reviews />} />
         <Route path='/similar'element={<SimilarListings />} />

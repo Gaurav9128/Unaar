@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { Navbar, Nav, Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Navbar, Nav, Container, Row, Col, Form, Button,Offcanvas } from "react-bootstrap";
 import { FaSearch, FaGlobe, FaBars, FaUser } from "react-icons/fa";
+import TopNavbar from "./TopNavbar";
 import logo from "../assets/images/logo.png";
 import heroBg from "../assets/images/partner.jpeg";
 import indiaFlag from "../assets/images/india-flag.png";
@@ -21,58 +22,61 @@ const Partnerwithus = () => {
     return (
         <>
             {/* ✅ Top Navbar */}
-            <Navbar expand="lg" className="bg-white py-0 mb-3">
-                <Container>
-                    <Navbar.Toggle aria-controls="navbarNav" />
-                    <Navbar.Collapse id="navbarNav">
-                        <div className="nav-wrapper">
-                            <Nav className="me-auto fw-bold text-dark">
-                                <Nav.Link href="/careers">Careers</Nav.Link>
-                                <Nav.Link href="/advertise">Advertise</Nav.Link>
-                                <Nav.Link href="#">News & Articles</Nav.Link>
-                                <Nav.Link href="#">Residence & Passports</Nav.Link>
-                                <Nav.Link href="/about">About</Nav.Link>
-                            </Nav>
-                            <div className="d-flex align-items-center ms-3">
-                                <img src={indiaFlag} alt="India" height="20" />
-                                <span className="ms-2">+91 98765 43210</span>
-                            </div>
-                        </div>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+            
+            <TopNavbar />
 
             {/* ✅ Main Navbar */}
-            <nav className="navbar navbar-expand-lg py-5 mt-3">
-                <div className="container">
-                    <Link to="/" className="navbar-brand fw-bold">
+            <Navbar expand="lg" className="py-5 mt-7 secondary-nav bg-light" sticky="top">
+                <Container>
+                    {/* Logo */}
+                    <Navbar.Brand as={Link} to="/" className="fw-bold">
                         <img src={logo} alt="UNAAR Logo" height="40" />
-                    </Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                        <FaBars />
-                    </button>
-                    <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-                        <ul className="navbar-nav text-center">
-                            <li className="nav-item px-3"><Link to="/residential" className="nav-link">Residential</Link></li>
-                            <li className="nav-item px-3"><Link to="/commercial" className="nav-link">Commercial</Link></li>
-                            <li className="nav-item px-3"><Link to="/Invest" className="nav-link">Invest</Link></li>
-                            <li className="nav-item px-3"><Link to="/Rent" className="nav-link">Rent</Link></li>
-                            <li className="nav-item px-3"><a href="/partner" className="nav-link">Partner With Us</a></li>
-                        </ul>
-                    </div>
-                    <div className="d-flex align-items-center gap-3">
-                        <div className="p-2 globe-icon">
-                            <FaGlobe />
-                        </div>
-                        <div className="border rounded-pill px-3 py-2 d-flex align-items-center gap-2 menu-user-icon">
-                            <FaBars />
-                            <div className="border rounded-circle p-2 globe-icon">
-                                <FaUser />
+                    </Navbar.Brand>
+
+                    {/* Toggle Button (Visible on Mobile) */}
+                    <Navbar.Toggle aria-controls="offcanvasNavbar" />
+
+                    {/* Offcanvas Menu */}
+                    <Navbar.Offcanvas
+                        id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel"
+                        placement="start"
+                    >
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title id="offcanvasNavbarLabel">
+                                Menu
+                            </Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+
+                            {/* Main Nav Links */}
+                            <Nav className="justify-content-center flex-grow-1 pe-3 text-center text-light custom-nav-links">
+                                <Nav.Link as={Link} to="/residential">Residential</Nav.Link>
+                                <Nav.Link as={Link} to="/commercial">Commercial</Nav.Link>
+                                <Nav.Link as={Link} to="/Invest">Invest</Nav.Link>
+                                <Nav.Link as={Link} to="/Rent">Rent</Nav.Link>
+                                <Nav.Link as={Link} to="/partner">Partner With Us</Nav.Link>
+                            </Nav>
+
+                            <div className="d-flex align-items-center gap-3">
+                                <div className="p-2 globe-icon icon-container">
+                                    <FaGlobe />
+                                </div>
+                                <div className="border rounded-pill px-3 py-2 d-flex align-items-center gap-2 menu-user-icon icon-container">
+                                    <FaBars />
+                                    <div className="border rounded-circle p-2 globe-icon icon-container">
+                                        <FaUser />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+
+
+                        </Offcanvas.Body>
+                    </Navbar.Offcanvas>
+
+
+                </Container>
+            </Navbar>
 
             {/* ✅ Hero Section */}
             <header className="hero-section text-center text-black d-flex align-items-center justify-content-center" style={{ backgroundImage: `url(${heroBg})`, height: "450px", width: "100%", color: "#fff" }}>

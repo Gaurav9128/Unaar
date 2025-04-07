@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Navbar, Nav, Container, Row, Col, Form, Button,Offcanvas } from "react-bootstrap";
 import { FaSearch, FaGlobe, FaBars, FaUser } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Rent.css";
+import TopNavbar from "./TopNavbar";
 import TopCountriesCards from "./TopCountries";
 import FeaturedListings from "../sections/FeaturedListings";
 import Footer from "./Footer";
@@ -17,68 +18,60 @@ const Rent = () => {
     return (
         <>
             {/* Top Navbar */}
-            <Navbar expand="lg" className="bg-white py-2">
-                <Container>
 
-                    {/* Toggle Button for Mobile View */}
-                    <Navbar.Toggle aria-controls="navbarNav" />
-
-                    {/* Navigation Links */}
-                    <Navbar.Collapse id="navbarNav">
-                        {/* Wrapper div with white background & border */}
-                        <div className="nav-wrapper">
-                            {/* Navigation Links (Left Side) */}
-                            <Nav className="me-auto fw-bold text-dark">  {/* fw-bold = bold, text-dark = black */}
-                                <Nav.Link href="/careers">Careers</Nav.Link>
-                                <Nav.Link href="/advertise">Advertise</Nav.Link>
-                                <Nav.Link href="#">News & Articles</Nav.Link>
-                                <Nav.Link href="#">Residence & Passports</Nav.Link>
-                                <Nav.Link href="/about">About</Nav.Link>
-                            </Nav>
-
-
-                            {/* Right Side: Flag & Contact */}
-                            <div className="d-flex align-items-center ms-3">
-                                <img src={indiaFlag} alt="India" height="20" />
-                                <span className="ms-2">+91 98765 43210</span>
-                            </div>
-                        </div>
-                    </Navbar.Collapse>
-
-
-                </Container>
-            </Navbar>
+            <TopNavbar />
 
 
             {/* Secondary Navigation */}
-            <Navbar className="bg-light secondary-nav py-5 mt-3">
-                <Container className="d-flex align-items-center">
-                    {/* Left Side Logo */}
-                    <Link to="/" className="navbar-brand fw-bold">
+            <Navbar expand="lg" className="py-5 mt-7 secondary-nav bg-light" sticky="top">
+                <Container>
+                    {/* Logo */}
+                    <Navbar.Brand as={Link} to="/" className="fw-bold">
                         <img src={logo} alt="UNAAR Logo" height="40" />
-                    </Link>
+                    </Navbar.Brand>
 
-                    {/* Centered Navigation Links */}
-                    <Nav className="d-flex justify-content-center align-items-center w-100 nav-links">
-                        <Nav.Link href="/residential">Residential</Nav.Link>
-                        <Nav.Link href="/commercial">Commercial</Nav.Link>
-                        <Nav.Link href="/Invest">Invest</Nav.Link>
-                        <Nav.Link href="/Rent" className="fw-bold text-warning">Rent</Nav.Link>
-                        <Nav.Link href="/partner">Partner With Us</Nav.Link>
-                       
-                    </Nav>
-                    {/* Icons Section */}
-                    <div className="d-flex align-items-center gap-3">
-                        <div className="p-2 globe-icon">
-                            <FaGlobe />
-                        </div>
-                        <div className="border rounded-pill px-3 py-2 d-flex align-items-center gap-2 menu-user-icon">
-                            <FaBars />
-                            <div className="border rounded-circle p-2 globe-icon">
-                                <FaUser />
+                    {/* Toggle Button (Visible on Mobile) */}
+                    <Navbar.Toggle aria-controls="offcanvasNavbar" />
+
+                    {/* Offcanvas Menu */}
+                    <Navbar.Offcanvas
+                        id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel"
+                        placement="start"
+                    >
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title id="offcanvasNavbarLabel">
+                                Menu
+                            </Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+
+                            {/* Main Nav Links */}
+                            <Nav className="justify-content-center flex-grow-1 pe-3 text-center text-light custom-nav-links">
+                                <Nav.Link as={Link} to="/residential">Residential</Nav.Link>
+                                <Nav.Link as={Link} to="/commercial">Commercial</Nav.Link>
+                                <Nav.Link as={Link} to="/Invest">Invest</Nav.Link>
+                                <Nav.Link as={Link} to="/Rent">Rent</Nav.Link>
+                                <Nav.Link as={Link} to="/partner">Partner With Us</Nav.Link>
+                            </Nav>
+
+                            <div className="d-flex align-items-center gap-3">
+                                <div className="p-2 globe-icon icon-container">
+                                    <FaGlobe />
+                                </div>
+                                <div className="border rounded-pill px-3 py-2 d-flex align-items-center gap-2 menu-user-icon icon-container">
+                                    <FaBars />
+                                    <div className="border rounded-circle p-2 globe-icon icon-container">
+                                        <FaUser />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+
+
+                        </Offcanvas.Body>
+                    </Navbar.Offcanvas>
+
+
                 </Container>
             </Navbar>
 
@@ -110,6 +103,20 @@ const Rent = () => {
                             <Form.Label>Location</Form.Label>
                             <Form.Select>
                                 <option>Select Your City</option>
+                                <option>India</option>
+                                <option>Germany</option>
+                                <option>Italy</option>
+                                <option>Cyprus</option>
+                                <option>Greece</option>
+                                <option>France</option>
+                                <option>Spain</option>
+                                <option>Spain</option>
+                                <option>Thailand</option>
+                                <option>UAE</option>
+                                <option>Turkey</option>
+                                <option>United Kingdom</option>
+                                <option>Montenegro</option>
+
                             </Form.Select>
                         </Form.Group>
                     </Col>
@@ -118,6 +125,9 @@ const Rent = () => {
                             <Form.Label>Property Type</Form.Label>
                             <Form.Select>
                                 <option>All Type</option>
+                                <option>Apartments</option>
+                                <option>Houses,villas,cottages</option>
+                                <option>Terraced house</option>
                             </Form.Select>
                         </Form.Group>
                     </Col>
@@ -126,12 +136,23 @@ const Rent = () => {
                             <Form.Label>Price Range</Form.Label>
                             <Form.Select>
                                 <option>Choose Price Range</option>
+                                <option>0-50,000</option>
+                                <option>50,000-1,00,000</option>
+                                <option>1,00,000-2,00,000</option>
+                                <option>2,00,000-3,00,000</option>
+                                <option>3,00,000-4,00,000</option>
+                                <option>4,00,000-5,00,000</option>
+                                <option>5,00,000-10,00,000</option>
+                                <option>10,00,000-20,00,000</option>
+                                <option>20,00,000-30,00,000</option>
+                                <option>30,00,000-40,00,000</option>
+                                <option>40,00,000-50,00,000</option>
                             </Form.Select>
                         </Form.Group>
                     </Col>
                     <Col md={3} xs={12} className="d-flex align-items-center gap-2">
                         <Form.Group className="flex-grow-1">
-                            <Form.Label>More</Form.Label>
+                            <Form.Label>$USD</Form.Label>
                             <Form.Select>
                                 <option>Select</option>
                             </Form.Select>

@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import personImage from "../assets/images/person.png";
 
 const AgentSection = () => {
+  const navigate = useNavigate();
+
+  const handleBecomePartnerClick = () => {
+    navigate("/partner"); // navigate to 'Partner with us' page
+  };
+
   return (
     <div className="container py-5">
       <div className="row align-items-center">
@@ -15,23 +22,33 @@ const AgentSection = () => {
           <p className="text-muted">
             Our partners receive not only requests about their properties but also requests regarding other partners’ real properties.
           </p>
-          <button className="btn text-white" style={{ backgroundColor: "#C69E6A" }}>
+          <button
+            className="btn text-white"
+            style={{ backgroundColor: "#C69E6A" }}
+            onClick={handleBecomePartnerClick}
+          >
             Become a partner
           </button>
         </div>
 
         {/* Right Content - Images */}
         <div className="col-md-6 d-flex justify-content-center mt-4 mt-md-0 position-relative">
-          <div className="position-relative" style={{ width: "220px", height: "250px" }}>
+          <div
+            className="position-relative"
+            style={{ width: "220px", height: "250px" }}
+          >
             {/* Background Image */}
-            <img 
-              src={personImage} 
-              alt="Agent" 
+            <img
+              src={personImage}
+              alt="Agent"
               className="w-100 h-100 rounded object-cover shadow-lg"
               style={{ objectFit: "cover" }}
             />
             {/* Badge */}
-            <div className="position-absolute top-0 end-0 bg-warning text-white text-center fw-semibold d-flex align-items-center justify-content-center rounded-circle shadow-md" style={{ width: "60px", height: "60px" }}>
+            <div
+              className="position-absolute top-0 end-0 bg-warning text-white text-center fw-semibold d-flex align-items-center justify-content-center rounded-circle shadow-md"
+              style={{ width: "60px", height: "60px" }}
+            >
               <span>25 Years</span>
             </div>
           </div>

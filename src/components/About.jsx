@@ -1,8 +1,9 @@
 import React from "react";
-import { Container, Row, Col, Card, Navbar, Nav } from "react-bootstrap";
+import { Container, Row, Col, Card, Navbar, Nav, Offcanvas } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaGlobe, FaBars, FaUser } from "react-icons/fa";
 import "./About.css"; // Custom styles if needed
+import TopNavbar from "./TopNavbar";
 import airplaneImage from "../assets/images/airplane.png"; // Replace with your image path
 import indiaFlag from "../assets/images/india-flag.png";
 import logo from "../assets/images/logo.png";
@@ -13,65 +14,76 @@ const About = () => {
     return (
         <>
             {/* Top Navbar */}
-            <Navbar expand="lg" className="bg-white py-2">
-                <Container>
-                    <Navbar.Toggle aria-controls="navbarNav" />
-                    <Navbar.Collapse id="navbarNav">
-                        <div className="nav-wrapper">
-                            <Nav className="me-auto fw-bold text-dark">
-                                <Nav.Link as={Link} to="/careers">Careers</Nav.Link>
-                                <Nav.Link as={Link} to="/advertise">Advertise</Nav.Link>
-                                <Nav.Link as={Link} to="#">News & Articles</Nav.Link>
-                                <Nav.Link as={Link} to="#">Residence & Passports</Nav.Link>
-                                <Nav.Link as={Link} to="/about">About</Nav.Link>
-                            </Nav>
-                            <div className="d-flex align-items-center ms-3">
-                                <img src={indiaFlag} alt="India" height="20" />
-                                <span className="ms-2">+91 98765 43210</span>
-                            </div>
-                        </div>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+
+            <TopNavbar />
 
             {/* Secondary Navigation */}
-            <Navbar className="bg-light secondary-nav py-5 mt-3 text-dark">
-                <Container className="d-flex align-items-center">
-                    <Link to="/" className="navbar-brand fw-bold text-dark">
+
+            <Navbar expand="lg" className="py-5 mt-7 secondary-nav bg-light" sticky="top">
+                <Container>
+                    {/* Logo */}
+                    <Navbar.Brand as={Link} to="/" className="fw-bold">
                         <img src={logo} alt="UNAAR Logo" height="40" />
-                    </Link>
-                    <Nav className="fw-bold text-dark">
-                        <Nav.Link href="/residential">Residential</Nav.Link>
-                        <Nav.Link href="/commercial">Commercial</Nav.Link>
-                        <Nav.Link href="/Invest">Invest</Nav.Link>
-                        <Nav.Link href="/Rent">Rent</Nav.Link>
-                        <Nav.Link href="/advertise">Partner With Us</Nav.Link>
-                    </Nav>
-                    <div className="d-flex align-items-center gap-3">
-                        <div className="p-2 globe-icon text-dark">
-                            <FaGlobe />
-                        </div>
-                        <div className="border rounded-pill px-3 py-2 d-flex align-items-center gap-2 menu-user-icon" style={{ color: "black", border: "2px solid black" }}>
-                            <FaBars />
-                            <div className="border rounded-circle p-2 globe-icon" style={{ color: "black", border: "2px solid Black" }}>
-                                <FaUser />
+                    </Navbar.Brand>
+
+                    {/* Toggle Button (Visible on Mobile) */}
+                    <Navbar.Toggle aria-controls="offcanvasNavbar" />
+
+                    {/* Offcanvas Menu */}
+                    <Navbar.Offcanvas
+                        id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel"
+                        placement="start"
+                    >
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title id="offcanvasNavbarLabel">
+                                Menu
+                            </Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+
+                            {/* Main Nav Links */}
+                            <Nav className="justify-content-center flex-grow-1 pe-3 text-center text-light custom-nav-links">
+                                <Nav.Link as={Link} to="/residential">Residential</Nav.Link>
+                                <Nav.Link as={Link} to="/commercial">Commercial</Nav.Link>
+                                <Nav.Link as={Link} to="/Invest">Invest</Nav.Link>
+                                <Nav.Link as={Link} to="/Rent">Rent</Nav.Link>
+                                <Nav.Link as={Link} to="/partner">Partner With Us</Nav.Link>
+                            </Nav>
+
+                            <div className="d-flex align-items-center gap-3">
+                                <div className="p-2 globe-icon icon-container">
+                                    <FaGlobe style={{ color: "black" }} />
+                                </div>
+                                <div className="border rounded-pill px-3 py-2 d-flex align-items-center gap-2 menu-user-icon icon-container">
+                                    <FaBars style={{ color: "black" }} />
+                                    <div className="border rounded-circle p-2 globe-icon icon-container">
+                                        <FaUser style={{ color: "black" }} />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+
+
+
+                        </Offcanvas.Body>
+                    </Navbar.Offcanvas>
+
+
                 </Container>
             </Navbar>
 
-
             {/* Main Content */}
-            <Container fluid className="real-estate-container py-5">
-                <Container className="mt-5 mb-6">
+            <Container fluid className="real-estate-container py-5 ">
+                <Container className="mb-6" style={{ marginTop: "120px" }}>
                     <Row className="align-items-center">
+                        {/* Text Content */}
                         <Col lg={7} md={6} sm={12} className="text-section text-start">
                             <h1 className="hero-title">
                                 Unaaar Is An International Real <br />Estate Brokerage
                             </h1>
+
                             <Row className="stats my-4">
-                                <Col md={4} className="stat-item ">
+                                <Col md={4} className="stat-item">
                                     <h3 style={{ color: "#CB9D62", fontWeight: "bold" }}>10</h3>
                                     <p>Offices In Europe</p>
                                 </Col>
@@ -84,6 +96,7 @@ const About = () => {
                                     <p>Partners From All Over The World</p>
                                 </Col>
                             </Row>
+
                             <p className="description" style={{ fontSize: "0.9rem" }}>
                                 Located in Taksim Gumuyu, the heart of Istanbul, the CVK Park
                                 Bosphorus Hotel Istanbul has risen from the ashes of the historic
@@ -91,11 +104,31 @@ const About = () => {
                                 ago and is hosting its guests by assuming this hospitality mission.
                             </p>
                         </Col>
-                        <Col lg={5} md={6} sm={12} className="text-end">
-                            <img src={airplaneImage} alt="Airplane View" className="airplane-img" />
+
+                        {/* Image for larger screens only */}
+                        <Col lg={5} md={6} className="d-none d-md-block text-end">
+                            <img
+                                src={airplaneImage}
+                                alt="Airplane View"
+                                className="airplane-img img-fluid"
+                                style={{ maxWidth: "100%", height: "auto" }}
+                            />
                         </Col>
+
+                        {/* Image for small screens (centered) */}
+                        <div className="d-block d-md-none text-center mt-3">
+                            <img
+                                src={airplaneImage}
+                                alt="Airplane View"
+                                className="airplane-img img-fluid mx-auto"
+                                style={{ maxWidth: "80%", height: "auto" }}
+                            />
+                        </div>
+
                     </Row>
                 </Container>
+
+
 
                 {/* Services Section */}
                 <Container className=" my-5">

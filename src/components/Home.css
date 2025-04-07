@@ -7,9 +7,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 50px;
 }
-
-
 /* Navigation Border */
 /* White Background & Border */
 .nav-wrapper {
@@ -27,18 +26,52 @@
   color: black !important;  /* Text Color Black */
   font-weight: bold;        /* Bold Text */
 }
-
-/* Secondary Navbar Background */
-/* */
-
-/* Navigation Links - White Text */
 .secondary-nav .nav-links .nav-link {
-  color: rgb(10, 10, 10) !important; /* Text Color White */
+  color: white !important; /* Text Color White */
   font-weight: bold; /* Bold Text */
   margin: 0 10px; /* Spacing Between Links */
 }
 
-/* \ */
+.custom-nav-links .nav-link {
+  color: white !important;
+}
+
+.icon-container {
+  color: white; /* Default white */
+  border-color: white;
+}
+
+@media (max-width: 768px) {
+  .icon-container {
+    color: black !important; /* Phone view ke liye black */
+    border-color: black !important;
+  }
+}
+.navbar-toggler {
+  border-color: white !important;
+}
+
+.navbar-toggler-icon {
+  background-color: white; /* Background white */
+}
+
+@media (max-width: 768px) {
+  .navbar-toggler {
+    filter: invert(1); /* Icon ko white banane ke liye */
+  }
+}
+
+
+/* For laptop and up (min-width 992px) */
+@media (min-width: 992px) {
+  .custom-nav-links .nav-link {
+    color: white;
+  }
+
+  .navbar {
+    background-color: transparent; /* optional if background image shows behind navbar */
+  }
+}
 
 
 .hero-title {
@@ -52,7 +85,7 @@
 }
 /* Secondary Navigation */
 .secondary-nav {
-  margin-top: 50px; /* Adjust as needed */
+  margin-top: 80px; /* Adjust as needed */
 }
 
 /* Search Bar */
@@ -70,9 +103,13 @@
   margin-top: 200px !important; /* Adjust this value as needed */
 }
 
+.offcanvas.offcanvas-start {
+  width: 250px;
+}
+
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .hero-title {
     font-size: 2rem;
   }
@@ -80,4 +117,4 @@
   .hero-subtitle {
     font-size: 1rem;
   }
-}
+} */
