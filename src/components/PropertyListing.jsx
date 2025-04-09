@@ -136,9 +136,10 @@ const ContactForm = () => {
           <a href="tel:+919876543210" className="btn btn-primary w-50 me-2">
             <FaPhoneAlt /> Call Now
           </a>
-          <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="btn btn-success w-50">
+          <a href="https://wa.me/9119129138" target="_blank" rel="noopener noreferrer" className="btn btn-success w-50">
             <FaWhatsapp /> WhatsApp
           </a>
+
         </div>
       </form>
       <p className="mt-2 text-muted" style={{ fontSize: "12px" }}>
